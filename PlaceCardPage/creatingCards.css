@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+
+
+}
+
+.logo-container {
+    height: 100%;
+    align-content: center;
+    margin-left: 30px;
+}
+
+.logo {
+    height: 65%;
+}
+
+.button-container {
+    display: flex;
+    height: 100%;
+    width: 400px;
+    align-items: center;
+    justify-content: center;
+}
+
+.place-card-button {
+    font-family: "Nunito", sans-serif;
+    font-weight: 1000;
+    font-size: 15px;
+
+    width: 250px;
+    height: 50px;
+
+    border: 4px solid black;
+    border-radius: 15px;
+    background-color: #00bbff;
+    color: white;
+
+    transition: 0.2s ease;
+}
+
+.place-card-button:hover {
+    width: 280px;
+    height: 60px;
+    font-size: 17px;
+    transition: 0.1s ease;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.car-name-container {
+
+}
+
+.car-name {
+
+}
+
+.car-name-button {
+
+}
+
+.car-model-container {
+    /*display: none;*/
+}
+
+.car-model {
+
+}
+
+.car-model-button {
+
+}
+
+
+.car-drive-container {
+    /*display: none;*/
+}
+
+.car-drive {
+
+}
+
+.car-drive-button {
+
+}
+
+
+.car-transmission-container {
+    /*display: none;*/
+}
+
+.car-transmission {
+
+}
+
+.car-transmission-button {
+
+}
+
+.car-price-container {
+
+}
+
+.car-price {
+
+}
+
+.car-price-button

@@ -4,10 +4,12 @@ const USER_CARDS_API_URL = "https://671ca9cf09103098807ac514.mockapi.io/api/v1/u
 const mainContent = document.querySelector("main")
 const cardsContainer = mainContent.children[0]
 
+let result;
 const placeCarData = async () => {
     let promise = new Promise(async (resolve, reject) => {
         let response = await fetch(USER_CARDS_API_URL);
-        let result =  await response.json();
+        result =  await response.json();
+
 
         if (response.ok) {
             resolve(result);
@@ -20,7 +22,7 @@ const placeCarData = async () => {
                 for (cars of res) {
                     const carCard = document.createElement("div");
                     carCard.className = "car-card-container";
-                    carCard.setAttribute("data-id", cars["id"])
+
 
                     const createPic = (carType) => {
                         const picture = document.createElement("img");
@@ -93,19 +95,73 @@ const placeCarData = async () => {
                     infoContainer.appendChild(carTrans);
 
                     const infoButton = document.createElement("button");
+                    infoButton.setAttribute("data-id", cars["id"])
                     infoButton.className = "info-button";
                     infoButton.innerHTML = "Подробнее"
                     carInfo.appendChild(infoButton);
-
-
-
+                    infoButton.addEventListener("click", () => {
+                        for (car of res) {
+                            if (car["id"] === infoButton.getAttribute("data-id")) {
+                                openCard(car)
+                            }
+                        }
+                    });
                     cardsContainer.append(carCard);
                 }
+
+
             }
         )
     })
 }
 placeCarData()
+
+const infoCard = mainContent.children[1];
+
+const openCard = (obj) => {
+    infoCard.style.display = "flex"
+
+    const createPic = (carType) => {
+        const picture = infoCard.children[0];
+        picture.setAttribute("src", `../assets/${carType}`);
+    }
+
+    switch (obj["carData"]["class"]) {
+        case "midsize car":
+        case "two seater":
+        case "minicompact car":
+        case "subcompact car":
+            createPic("DEF.svg");
+            break;
+        case "standard pickup truck":
+        case "small pickup truck":
+            createPic("SUV.svg");
+            break;
+        default:
+            createPic("VAN.svg");
+            break;
+    }
+
+    infoCard.children[1].children[0].children[0].children[0].innerHTML = `${obj["carData"]["make"]} ${obj["carData"]["model"]}`;
+    infoCard.children[1].children[0].children[0].children[1].innerHTML = `Класс: ${obj["carData"]["class"]}`;
+    infoCard.children[1].children[0].children[0].children[2].innerHTML = `Тип топлива: ${obj["carData"]["fuel_type"]}`;
+    infoCard.children[1].children[0].children[0].children[3].innerHTML = `Цилиндры: ${obj["carData"]["cylinders"]}`;
+
+    infoCard.children[1].children[0].children[1].children[0].innerHTML = `Цена: ${obj["price"]}`;
+    infoCard.children[1].children[0].children[1].children[1].innerHTML = `Год: ${obj["carData"]["year"]}`;
+    infoCard.children[1].children[0].children[1].children[2].innerHTML = `Тип КПП: ${obj["carData"]["transmission"]}`;
+    infoCard.children[1].children[0].children[1].children[3].innerHTML = `Привод: ${obj["carData"]["drive"]}`;
+
+
+
+
+
+}
+
+
+
+
+
 
 
 

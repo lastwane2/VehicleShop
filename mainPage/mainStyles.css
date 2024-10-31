@@ -152,6 +152,31 @@ main {
 }
 
 
+
+
+.info-card {
+    display: none;
+    width: 600px;
+    height: 500px;
+    flex-direction: column;
+    z-index:99999999;
+    position: fixed;
+    top: 15%;
+    left: 28%;
+    background-color: white;
+    justify-content: space-around;
+    align-items: center;
+
+    border: 1px solid grey;
+    border-radius: 15px;
+}
+
+.card-picture {
+    width: 200px;
+    height: 200px;
+}
+
+
 @keyframes ani {
     0% {opacity: 0;}
     100% {opacity: 1;}

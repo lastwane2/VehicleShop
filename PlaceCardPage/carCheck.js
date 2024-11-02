@@ -9,8 +9,7 @@ const carPrice = document.getElementById("car-price")
 
 const nameButton = document.getElementById("car-name-button")
 const modelButton = document.getElementById("car-model-button")
-const driveButton = document.getElementById("car-drive-button")
-const transmissionButton = document.getElementById("car-transmission-button")
+const acceptButton = document.getElementById("accept-button")
 const priceButton = document.getElementById("car-price-button")
 const sendDataButton = document.getElementById("car-send-button")
 
@@ -46,7 +45,7 @@ const checkCarName = async () => {
 }
 
 
-let narrowerModelList = [];
+let arrAfterModel = [];
 const checkCarModel = () => {
     if (carModel.disabled === false) {
         carModel.disabled = true;
@@ -54,88 +53,68 @@ const checkCarModel = () => {
     } else {
         carModel.disabled = false;
         modelButton.innerHTML = "Подтвердить";
-        narrowerModelList = [];
+        arrAfterModel = [];
         return true;
     }
 
-    for (let models of activeModel) {
-        if (models["model"].includes(carModel.value)) {
-            document.body.children[1].children[2].style.display = "block";
-            carModel.value = models["model"];
-            modelButton.style.color = "green";
-            narrowerModelList.push(models);
-        } else {
-            // modelButton.style.color = "red";
-            // document.body.children[1].children[2].style.display = "none";
-        }
+    arrAfterModel = activeModel.filter((car) => car["model"].includes(carModel.value));
+    if (arrAfterModel.length > 0) {
+        document.body.children[1].children[2].style.display = "block";
+        document.body.children[1].children[3].style.display = "block";
+        document.body.children[1].children[4].style.display = "block";
+        carModel.value = arrAfterModel[0]["model"];
+        modelButton.style.color = "green";
+    } else {
+        modelButton.style.color = "red";
+        document.body.children[1].children[2].style.display = "none";
+        document.body.children[1].children[3].style.display = "none";
+        document.body.children[1].children[4].style.display = "none";
+
     }
-    console.log(narrowerModelList);
+
+    console.log(arrAfterModel);
 }
 
-
-
-
-const checkCarDrive = () => {
-    if(carDrive.disabled === false) {
+let arrAfterAllData = [];
+const checkAllCarData = () => {
+    if (carDrive.disabled === false) {
         carDrive.disabled = true;
-        driveButton.innerHTML = "Изменить";
-    } else {
-        setTimeout(() => carDrive.disabled = false, 1500);
-        driveButton.innerHTML = "Подтвердить";
-        checkCarModel();
-        return true;
-    }
-
-    for(let models of narrowerModelList) {
-        if (models["drive"].includes(carDrive.value)) {
-            document.body.children[1].children[3].style.display = "block";
-            carDrive.value = models["drive"];
-            driveButton.style.color = "green";
-        } else {
-            driveButton.style.color = "red";
-            delete narrowerModelList[models];
-        }
-    }
-    console.log(narrowerModelList);
-}
-
-
-
-let narrowerModelListYear = [];
-const checkCarTransmission = () => {
-    if (carTransmission.disabled === false) {
         carTransmission.disabled = true;
-        transmissionButton.innerHTML = "Изменить";
+        acceptButton.innerHTML = "Изменить";
     } else {
+        carDrive.disabled = false;
         carTransmission.disabled = false;
-        transmissionButton.innerHTML = "Подтвердить";
-        checkCarDrive();
+        acceptButton.innerHTML = "Подтвердить";
+        arrAfterAllData = [];
         return true;
     }
 
-
-    for (let models of narrowerModelList) {
-        if (models["year"] == carTransmission.value) {
-            document.body.style.backgroundColor = "green";
-            carTransmission.value = models["year"];
-            transmissionButton.style.color = "green";
-            narrowerModelListYear.push(models);
-        } else {
-            transmissionButton.style.color = "red";
-        }
+    arrAfterAllData = arrAfterModel.filter((car) => {
+        return (car["drive"].includes(carDrive.value) && car["year"] == carTransmission.value)
+    });
+    if (arrAfterAllData.length > 0) {
+        document.body.children[1].children[5].style.display = "block";
+        acceptButton.style.color = "green";
+    } else {
+        acceptButton.style.color = "red";
+        document.body.children[1].children[5].style.display = "none";
     }
-    console.log(narrowerModelListYear);
+    console.log(arrAfterAllData);
 }
+
 
 const setCarPrice = () => {
     if (carPrice.disabled === false) {
         carPrice.disabled = true;
         priceButton.innerHTML = "Изменить";
         userCarPrice = carPrice.value;
+        document.body.children[1].children[6].style.display = "block";
         return userCarPrice;
+
     } else {
         carPrice.disabled = false;
         priceButton.innerHTML = "Подтвердить";
+        document.body.children[1].children[6].style.display = "none";
         return true;
     }
 }
@@ -144,7 +123,7 @@ const sendCarData = () => {
     const sendData = new Promise(async (resolve, reject) => {
         let userData = {
             price: userCarPrice,
-            carData: narrowerModelListYear[0]
+            carData: arrAfterAllData[0]
         };
 
         let response = await fetch(USER_CARDS_API_URL, {
@@ -178,5 +157,4 @@ sendDataButton.addEventListener("click", sendCarData)
 priceButton.addEventListener("click", setCarPrice);
 nameButton.addEventListener("click", checkCarName)
 modelButton.addEventListener("click", checkCarModel)
-driveButton.addEventListener("click", checkCarDrive)
-transmissionButton.addEventListener("click", checkCarTransmission)
+acceptButton.addEventListener("click", checkAllCarData)

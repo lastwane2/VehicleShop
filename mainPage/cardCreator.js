@@ -147,7 +147,7 @@ const openCard = (obj) => {
     infoCard.children[1].children[0].children[0].children[2].innerHTML = `Тип топлива: ${obj["carData"]["fuel_type"]}`;
     infoCard.children[1].children[0].children[0].children[3].innerHTML = `Цилиндры: ${obj["carData"]["cylinders"]}`;
 
-    infoCard.children[1].children[0].children[1].children[0].innerHTML = `Цена: ${obj["price"]}`;
+    infoCard.children[1].children[0].children[1].children[0].innerHTML = `Цена: ${obj["price"]} руб.`;
     infoCard.children[1].children[0].children[1].children[1].innerHTML = `Год: ${obj["carData"]["year"]}`;
     infoCard.children[1].children[0].children[1].children[2].innerHTML = `Тип КПП: ${obj["carData"]["transmission"]}`;
     infoCard.children[1].children[0].children[1].children[3].innerHTML = `Привод: ${obj["carData"]["drive"]}`;

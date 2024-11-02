@@ -61,64 +61,232 @@ main {
     align-content: center;
     flex-direction: column;
     flex-wrap: wrap;
+    gap: 25px;
 }
 
 .car-name-container {
 
-}
-
-.car-name {
 
 }
 
-.car-name-button {
+#car-name {
+    width: 300px;
+    height: 25px;
+    border: 2px solid black;
+    border-radius: 15px;
 
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    padding-left: 15px;
+}
+
+#car-name-button {
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+
+    width: 100px;
+    height: 35px;
+
+    border: 2px solid black;
+    border-radius: 15px;
+    background-color: #00bbff;
+    color: white;
+
+    transition: 0.2s ease;
+}
+
+#car-name-button:hover {
+    width: 110px;
+    height: 40px;
+    font-size: 13px;
+    transition: 0.1s ease;
 }
 
 .car-model-container {
-    /*display: none;*/
+    display: none;
 }
 
-.car-model {
+#car-model {
+    width: 300px;
+    height: 25px;
+    border: 2px solid black;
+    border-radius: 15px;
 
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    padding-left: 15px;
 }
 
-.car-model-button {
+#car-model-button {
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
 
+    width: 100px;
+    height: 35px;
+
+    border: 2px solid black;
+    border-radius: 15px;
+    background-color: #00bbff;
+    color: white;
+
+    transition: 0.2s ease;
+}
+
+#car-model-button:hover {
+    width: 110px;
+    height: 40px;
+    font-size: 13px;
+    transition: 0.1s ease;
 }
 
 
 .car-drive-container {
-    /*display: none;*/
+    display: none;
 }
 
-.car-drive {
+#car-drive {
+    width: 300px;
+    height: 25px;
+    border: 2px solid black;
+    border-radius: 15px;
 
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    padding-left: 15px;
 }
 
-.car-drive-button {
+#car-drive-button {
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
 
+    width: 100px;
+    height: 35px;
+
+    border: 2px solid black;
+    border-radius: 15px;
+    background-color: #00bbff;
+    color: white;
+
+    transition: 0.2s ease;
+}
+
+#car-drive-button:hover {
+    width: 110px;
+    height: 40px;
+    font-size: 13px;
+    transition: 0.1s ease;
 }
 
 
 .car-transmission-container {
-    /*display: none;*/
+    display: none;
 }
 
-.car-transmission {
+#car-transmission {
+    width: 300px;
+    height: 25px;
+    border: 2px solid black;
+    border-radius: 15px;
 
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    padding-left: 15px;
 }
 
-.car-transmission-button {
+#accept-button {
+    display: none;
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
 
+    width: 405px;
+    height: 35px;
+
+    border: 2px solid black;
+    border-radius: 15px;
+    background-color: #00bbff;
+    color: white;
+
+    transition: 0.2s ease;
+}
+
+
+#accept-button:hover {
+    width: 410px;
+    height: 40px;
+    font-size: 13px;
+    transition: 0.1s ease;
 }
 
 .car-price-container {
-
+    display: none;
 }
 
-.car-price {
+#car-price {
+    width: 300px;
+    height: 25px;
+    border: 2px solid black;
+    border-radius: 15px;
 
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    padding-left: 15px;
 }
 
-.car-price-button
+#car-price-button {
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+
+    width: 100px;
+    height: 35px;
+
+    border: 2px solid black;
+    border-radius: 15px;
+    background-color: #00bbff;
+    color: white;
+
+    transition: 0.2s ease;
+}
+
+#car-price-button:hover {
+    width: 110px;
+    height: 40px;
+    font-size: 13px;
+    transition: 0.1s ease;
+}
+
+#car-send-button {
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+
+    width: 405px;
+    height: 35px;
+
+    border: 2px solid black;
+    border-radius: 15px;
+    background-color: #00bbff;
+    color: white;
+
+    transition: 0.2s ease;
+}
+
+#car-send-button:hover {
+    width: 410px;
+    height: 40px;
+    font-size: 13px;
+    transition: 0.1s ease;
+}
+
+.car-send-button-container {
+    display: none;
+}
